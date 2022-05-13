@@ -22,12 +22,7 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: gitclone
       - uses: actions/checkout@v3
 
-      - name: Configure AWS
-      - uses: aws-actions/configure-aws-credentials@v3
-        with:
-          aws-acces-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ env.AWS_REGION_NAME }}
+     
