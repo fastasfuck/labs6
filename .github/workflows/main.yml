@@ -38,18 +38,16 @@ jobs:
      
     - name: Setup nginx on ec2 server
       run: aws ec2 run-instances --image-id ami-09d56f8956ab235b3 --count 1 --instance-type t2.micro --key-name forLABS --security-groups Lab1 --user-data file://bash.sh 
-    - name: Send Telegram Message Ok
+     
+    - name: send telegram message on push
       uses: appleboy/telegram-action@master
-      env:
-          GITHUB_CONTEXT: ${{ toJSON(github) }}
       with:
           to: ${{ secrets.TELEGRAM_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          format: markdown
           message: |
-            *1st line of your message with bold*
-            *2nd line of your message with bold, too*
-            Application: *Write something to be put inside your message*. The below lines still are part of your message.          
-            Branch: *${{ github.ref }}*
-            Repository: *${{ github.repository }}*
-            Owner: *${{ github.repository_owner }}*
+            ${{ github.actor }} created commit:
+            Commit message: ${{ github.event.commits[0].message }}
+            
+            Repository: ${{ github.repository }}
+            
+            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
