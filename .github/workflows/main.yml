@@ -37,5 +37,5 @@ jobs:
         aws-region: ${{ env.AWS_REGION }}
      
     - name: Setup nginx on ec2 server
-      run: aws ec2 run-instances --image-id ami-09d56f8956ab235b3 --count 1 --instance-type t2.micro --key-name forLABS --security-groups Lab1 --user-data apt-get install nginx
+      run: aws ec2 run-instances --image-id ami-09d56f8956ab235b3 --count 1 --instance-type t2.micro --key-name forLABS --security-groups Lab1 --user-data file://bash.sh 
       
