@@ -18,7 +18,7 @@ on:
 env:
   AWS_REGION: "us-east-1"  
 
-# A workflow run is made up of one or more jobs thats can run sequentially or in parallel
+# A workflow run is made up of one or more jobs thats can run sequentially or ain parallel
 jobs:
   # This workflow contains a single job called "build"
   build:
